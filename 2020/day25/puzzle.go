@@ -1,7 +1,9 @@
 package day25
 
-import "strconv"
-import "strings"
+import (
+	"strconv"
+	"strings"
+)
 
 func Part1(input string) int {
 	door, key := parseInput(input)
