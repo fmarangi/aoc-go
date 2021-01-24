@@ -12,7 +12,7 @@ func Part1(input string) (triangles int) {
 			triangles += 1
 		}
 	}
-	return triangles
+	return
 }
 
 func Part2(input string) (triangles int) {
@@ -24,7 +24,7 @@ func Part2(input string) (triangles int) {
 			}
 		}
 	}
-	return triangles
+	return
 }
 
 func parseInput(input string) (triangles [][]int) {
@@ -35,7 +35,7 @@ func parseInput(input string) (triangles [][]int) {
 		}
 		triangles = append(triangles, triangle)
 	}
-	return triangles
+	return
 }
 
 func IsTriangle(sides []int) bool {
