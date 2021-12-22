@@ -7,21 +7,19 @@ import (
 
 const DRAWN = 1000
 
-type Board struct {
-	numbers [25]int
-}
+type Board [25]int
 
 func (board *Board) markDrawn(drawn int) {
-	for i, n := range board.numbers {
+	for i, n := range board {
 		if n == drawn {
-			board.numbers[i] = DRAWN
+			board[i] = DRAWN
 			break
 		}
 	}
 }
 
 func (board Board) score() (score int) {
-	for _, n := range board.numbers {
+	for _, n := range board {
 		if n != DRAWN {
 			score += n
 		}
@@ -33,8 +31,8 @@ func (board Board) hasWon() bool {
 	for i := 0; i < 5; i++ {
 		row, col := true, true
 		for j := 0; j < 5 && (row || col); j++ {
-			row = row && board.numbers[i*5+j] == DRAWN
-			col = col && board.numbers[j*5+i] == DRAWN
+			row = row && board[i*5+j] == DRAWN
+			col = col && board[j*5+i] == DRAWN
 		}
 		if row || col {
 			return true
@@ -86,7 +84,7 @@ func parseInput(input string) (drawn []int, boards []*Board) {
 		boards = append(boards, board)
 		for i, n := range strings.Fields(b) {
 			num, _ := strconv.Atoi(n)
-			board.numbers[i] = num
+			board[i] = num
 		}
 	}
 
