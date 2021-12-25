@@ -36,7 +36,7 @@ func toInt(bin string) int {
 }
 
 func readPacket(bits string) (Packet, string) {
-	packet := Packet{toInt(bits[0:3]), toInt(bits[3:6]), 0, []Packet{}}
+	packet := Packet{version: toInt(bits[0:3]), typ: toInt(bits[3:6])}
 
 	switch {
 	case packet.typ == TYPE_LITERAL:

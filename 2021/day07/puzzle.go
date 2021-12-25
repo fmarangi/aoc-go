@@ -1,7 +1,6 @@
 package day07
 
 import (
-	"math"
 	"sort"
 	"strconv"
 	"strings"
@@ -22,12 +21,12 @@ func abs(num int) int {
 	return -num
 }
 
-func avg(nums []int) float64 {
+func avg(nums []int) int {
 	average := 0
 	for _, n := range nums {
 		average += n
 	}
-	return float64(average) / float64(len(nums))
+	return average / len(nums)
 }
 
 func totalFuel(distance int) int {
@@ -47,7 +46,7 @@ func Part1(input string) (fuel int) {
 func Part2(input string) int {
 	nums := parseInput(input)
 	average := avg(nums)
-	a, b := int(average), int(math.Ceil(average))
+	a, b := average, average+1
 	fuelA, fuelB := 0, 0
 	for _, n := range nums {
 		fuelA += totalFuel(abs(n - a))
