@@ -27,3 +27,19 @@ func TestAbs(t *testing.T) {
 		}
 	}
 }
+
+func TestSum(t *testing.T) {
+	tests := []struct {
+		input []int
+		exp   int
+	}{
+		{[]int{1, 2, 3, 4}, 10},
+		{[]int{1, 2, 4, 8, 16, 32, 64}, 127},
+	}
+
+	for _, test := range tests {
+		if result := Sum(test.input); result != test.exp {
+			t.Errorf("Expected %d, got: %d", test.exp, result)
+		}
+	}
+}
