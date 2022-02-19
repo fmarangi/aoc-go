@@ -28,7 +28,7 @@ func Part2(input string) int {
 
 func Bfs(maze *Maze, from, to Point) int {
 	var route Route
-	queue := []Route{Route{from, 0}}
+	queue := []Route{{from, 0}}
 	seen := map[Point]bool{from: true}
 	for len(queue) > 0 {
 		route, queue = queue[0], queue[1:]
@@ -47,7 +47,7 @@ func Bfs(maze *Maze, from, to Point) int {
 
 func Within50(maze *Maze, from Point) int {
 	var route Route
-	queue := []Route{Route{from, 0}}
+	queue := []Route{{from, 0}}
 	seen := map[Point]bool{from: true}
 	for len(queue) > 0 {
 		route, queue = queue[0], queue[1:]

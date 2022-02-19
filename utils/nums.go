@@ -1,6 +1,9 @@
 package utils
 
-import "strconv"
+import (
+	"math"
+	"strconv"
+)
 
 func ToInt(num string) (value int) {
 	value, _ = strconv.Atoi(num)
@@ -26,4 +29,24 @@ func Sum(nums []int) (sum int) {
 		sum += n
 	}
 	return
+}
+
+func Max(nums []int) int {
+	max := math.MinInt64
+	for _, n := range nums {
+		if n > max {
+			max = n
+		}
+	}
+	return max
+}
+
+func Min(nums []int) int {
+	min := math.MaxInt64
+	for _, n := range nums {
+		if n < min {
+			min = n
+		}
+	}
+	return min
 }
