@@ -5,7 +5,7 @@ import "encoding/hex"
 type Circle [256]byte
 
 func Init() (c Circle) {
-	for i := 0; i < 256; i++ {
+	for i := range c {
 		c[i] = byte(i)
 	}
 	return
@@ -16,18 +16,15 @@ func (c Circle) String() string {
 }
 
 func (c *Circle) Reverse(from, size int) {
-	swap := make([]byte, size)
-	for i := 0; i < size; i++ {
-		swap[i] = c[(from+i)%256]
-	}
-	for i := 0; i < size; i++ {
-		c[(from+i)%256] = swap[size-i-1]
+	for i := 0; i < size/2; i++ {
+		a, b := (from+i)%256, (from+size-i-1)%256
+		c[a], c[b] = c[b], c[a]
 	}
 }
 
 func (c Circle) toDenseHash() []byte {
 	result := make([]byte, 16)
-	for i := 0; i < 256; i++ {
+	for i := range c {
 		result[i/16] = result[i/16] ^ c[i]
 	}
 	return result

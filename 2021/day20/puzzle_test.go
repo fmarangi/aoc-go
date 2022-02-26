@@ -1,27 +1,13 @@
 package day20
 
 import (
-	"io/ioutil"
-	"strings"
 	"testing"
+
+	"github.com/fmarangi/aoc-go/utils"
 )
 
-type Solution struct {
-	part   func(string) int
-	result int
-}
-
 func TestSolvePuzzle(t *testing.T) {
-	parts := []Solution{
-		{Part1, 5395},
-		// {Part2, 17584},
-	}
-
-	content, _ := ioutil.ReadFile("input.txt")
-	input := strings.TrimSpace(string(content))
-	for _, test := range parts {
-		if res := test.part(input); res != test.result {
-			t.Errorf("Expected %d, got: %d", test.result, res)
-		}
-	}
+	input := utils.ReadInput("input.txt")
+	utils.Assert(t, 5395, Part1(input))
+	// utils.Assert(t, 17584, Part2(input))
 }

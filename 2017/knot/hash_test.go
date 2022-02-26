@@ -1,11 +1,13 @@
 package knot
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/fmarangi/aoc-go/utils"
+)
 
 func TestHash(t *testing.T) {
-	tests := []struct {
-		input, expected string
-	}{
+	tests := []struct{ input, expected string }{
 		{"", "a2582a3a0e66e6e86e3812dcb672a272"},
 		{"AoC 2017", "33efeb34ea91902bb2f59c9920caa6cd"},
 		{"1,2,3", "3efbe78a8d82f29979031a4aa0b16a9d"},
@@ -13,8 +15,6 @@ func TestHash(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		if res := Hash(test.input); res != test.expected {
-			t.Errorf("Expected %s, got: %s", test.expected, res)
-		}
+		utils.Assert(t, test.expected, Hash(test.input))
 	}
 }
