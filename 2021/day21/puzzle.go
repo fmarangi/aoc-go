@@ -73,5 +73,5 @@ func Part2(input string) int {
 		scores = newScores
 	}
 
-	return utils.Max(wins[:])
+	return utils.Max(wins[:]...)
 }

@@ -31,7 +31,7 @@ func Sum(nums []int) (sum int) {
 	return
 }
 
-func Max(nums []int) int {
+func Max(nums ...int) int {
 	max := math.MinInt64
 	for _, n := range nums {
 		if n > max {
@@ -41,8 +41,8 @@ func Max(nums []int) int {
 	return max
 }
 
-func Min(nums []int) int {
-	min := math.MaxInt64
+func Min(nums ...int) int {
+	min := math.MaxInt32
 	for _, n := range nums {
 		if n < min {
 			min = n

@@ -51,7 +51,7 @@ func Part2(input string) int {
 			}
 		}
 	}
-	return utils.Max(scores)
+	return utils.Max(scores...)
 }
 
 func parseInput(input string) (reindeers []Reindeer) {

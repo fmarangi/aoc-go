@@ -17,13 +17,13 @@ func TestSum(t *testing.T) {
 }
 
 func TestMax(t *testing.T) {
-	Assert(t, 4, Max([]int{1, 2, 3, 4}))
-	Assert(t, 64, Max([]int{1, 4, 64, 2, 8, 32, 16}))
-	Assert(t, -1, Max([]int{-1, -2, -3, -4}))
+	Assert(t, 4, Max(1, 2, 3, 4))
+	Assert(t, 64, Max(1, 4, 64, 2, 8, 32, 16))
+	Assert(t, -1, Max(-1, -2, -3, -4))
 }
 
 func TestMin(t *testing.T) {
-	Assert(t, 1, Min([]int{1, 2, 3, 4}))
-	Assert(t, 4, Min([]int{64, 8, 32, 4, 16}))
-	Assert(t, -4, Min([]int{-1, -2, -4, -3}))
+	Assert(t, 1, Min(1, 2, 3, 4))
+	Assert(t, 4, Min(64, 8, 32, 4, 16))
+	Assert(t, -4, Min(-1, -2, -4, -3))
 }
