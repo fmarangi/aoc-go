@@ -4,6 +4,7 @@ import (
 	"io/ioutil"
 	"strings"
 	"testing"
+	"unicode"
 )
 
 func Assert(t *testing.T, a, b interface{}) {
@@ -14,5 +15,5 @@ func Assert(t *testing.T, a, b interface{}) {
 
 func ReadInput(path string) string {
 	content, _ := ioutil.ReadFile(path)
-	return strings.TrimSpace(string(content))
+	return strings.TrimRightFunc(string(content), unicode.IsSpace)
 }
