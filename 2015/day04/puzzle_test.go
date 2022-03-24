@@ -9,5 +9,7 @@ import (
 func TestSolvePuzzle(t *testing.T) {
 	input := utils.ReadInput("input.txt")
 	utils.Assert(t, 346386, Part1(input))
-	utils.Assert(t, 9958218, Part2(input))
+	if !testing.Short() {
+		utils.Assert(t, 9958218, Part2(input))
+	}
 }
