@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func Generator(init, factor int) chan int {
+func Generator(init, factor int) <-chan int {
 	out := make(chan int)
 	go func() {
 		for {
@@ -16,7 +16,7 @@ func Generator(init, factor int) chan int {
 	return out
 }
 
-func FilterMultiples(in chan int, multiples int) chan int {
+func FilterMultiples(in <-chan int, multiples int) <-chan int {
 	out := make(chan int)
 	go func() {
 		for {
