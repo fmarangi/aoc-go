@@ -1,4 +1,4 @@
-package day15
+package day16
 
 import (
 	"testing"
@@ -8,8 +8,6 @@ import (
 
 func TestSolvePuzzle(t *testing.T) {
 	input := utils.ReadInput("input.txt")
-	utils.Assert(t, 620, Part1(input))
-	if !testing.Short() {
-		utils.Assert(t, 110871, Part2(input))
-	}
+	utils.Assert(t, 25895, Part1(input))
+	utils.Assert(t, 5865723727753, Part2(input))
 }
