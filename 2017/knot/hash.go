@@ -25,7 +25,7 @@ func (c *Circle) Reverse(from, size int) {
 func (c Circle) toDenseHash() []byte {
 	result := make([]byte, 16)
 	for i := range c {
-		result[i/16] = result[i/16] ^ c[i]
+		result[i/16] ^= c[i]
 	}
 	return result
 }
