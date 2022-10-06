@@ -7,10 +7,24 @@ import (
 )
 
 func TestScore(t *testing.T) {
-	utils.Assert(t, Score("{}"), 1)
-	utils.Assert(t, Score("{{{}}}"), 6)
-	utils.Assert(t, Score("{{},{}}"), 5)
-	utils.Assert(t, Score("{{{},{},{{}}}}"), 16)
+	utils.Assert(t, 1, Score("{}"))
+	utils.Assert(t, 6, Score("{{{}}}"))
+	utils.Assert(t, 5, Score("{{},{}}"))
+	utils.Assert(t, 16, Score("{{{},{},{{}}}}"))
+	utils.Assert(t, 1, Score("{<a>,<a>,<a>,<a>}"))
+	utils.Assert(t, 9, Score("{{<ab>},{<ab>},{<ab>},{<ab>}}"))
+	utils.Assert(t, 9, Score("{{<!!>},{<!!>},{<!!>},{<!!>}}"))
+	utils.Assert(t, 3, Score("{{<a!>},{<a!>},{<a!>},{<ab>}}"))
+}
+
+func TestGarbage(t *testing.T) {
+	utils.Assert(t, 0, Garbage("<>"))
+	utils.Assert(t, 17, Garbage("<random characters>"))
+	utils.Assert(t, 3, Garbage("<<<<>"))
+	utils.Assert(t, 2, Garbage("<{!>}>"))
+	utils.Assert(t, 0, Garbage("<!!>"))
+	utils.Assert(t, 0, Garbage("<!!!>>"))
+	utils.Assert(t, 10, Garbage("<{o\"i!a,<{i<a>"))
 }
 
 func TestSolvePuzzle(t *testing.T) {

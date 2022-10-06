@@ -1,32 +1,61 @@
 package day09
 
-import "regexp"
-
-func RemoveGarbage(stream string) string {
-	stream = regexp.MustCompile("!.").ReplaceAllString(stream, "")
-	return regexp.MustCompile("<[^>]*?>").ReplaceAllString(stream, "")
-}
-
 func Score(stream string) (score int) {
-	level := 0
-	for _, c := range stream {
-		switch c {
-		case '{':
+	var (
+		level     = 0
+		isGarbage = false
+		curr      byte
+	)
+
+	for i, n := 0, len(stream); i < n; i++ {
+		curr = stream[i]
+		switch {
+		case curr == '!':
+			i++
+		case curr == '<':
+			isGarbage = true
+		case curr == '>':
+			isGarbage = false
+		case isGarbage:
+			continue
+		case curr == '{':
 			level++
-		case '}':
+		case curr == '}':
 			score += level
 			level--
 		}
 	}
+
+	return
+}
+
+func Garbage(stream string) (garbage int) {
+	var (
+		isGarbage bool
+		curr      byte
+	)
+
+	for i, n := 0, len(stream); i < n; i++ {
+		curr = stream[i]
+		switch {
+		case curr == '!':
+			i++
+		case curr == '<' && !isGarbage:
+			isGarbage = true
+		case curr == '>':
+			isGarbage = false
+		case isGarbage:
+			garbage++
+		}
+	}
+
 	return
 }
 
 func Part1(input string) int {
-	return Score(RemoveGarbage(input))
+	return Score(input)
 }
 
 func Part2(input string) int {
-	stream := regexp.MustCompile("!.").ReplaceAllString(input, "")
-	garbage := regexp.MustCompile("<[^>]*?>")
-	return len(stream) - len(garbage.ReplaceAllString(stream, "<>"))
+	return Garbage(input)
 }
