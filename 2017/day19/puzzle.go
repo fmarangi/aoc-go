@@ -1,8 +1,6 @@
 package day19
 
-import (
-	"strings"
-)
+import "strings"
 
 const (
 	Up = iota

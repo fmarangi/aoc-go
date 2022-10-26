@@ -1,0 +1,26 @@
+b,c,d,e,f,g,h int
+
+b, c= 109300, 126300
+
+for b = 109300; b != 126300; b += 17 {
+  for e = 2; e * e < b; e++ {
+    if b % e == 0 {
+      nonPrime++
+    }
+  }
+} 
+
+set e 2
+set g d
+mul g e
+sub g b
+jnz g 2
+set f 0
+sub e -1
+set g e
+sub g b
+jnz g -8
+sub d -1
+set g d
+sub g b
+jnz g -13
