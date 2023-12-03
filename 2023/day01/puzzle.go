@@ -47,7 +47,7 @@ func Part2(input string) (sum int) {
 			}
 
 			for d, v := range digits {
-				if i+len(d) <= n && line[i:i+len(d)] == d {
+				if l := i + len(d); l <= n && line[i:l] == d {
 					last = v
 					if first == -1 {
 						first = v
